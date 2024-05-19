@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import ReactMarkdown from 'react-markdown'
-import './App.css'
-
+import { useState } from 'react'; // Import the useState hook for managing component state
+import ReactMarkdown from 'react-markdown'; // Import React Markdown library for rendering markdown
+import './App.css'; // Import styles from App.css
 
 const defaultMarkdown = `
 # Welcome to my React Markdown Previewer!
@@ -53,23 +52,29 @@ And here. | Okay. | I think we get it.
 `;
 
 function App() {
-  const [markdownText, setMarkDownText] = useState<string>(defaultMarkdown)
+  // Define a state variable 'markdownText' to hold the markdown content
+  // and set its initial value to the defaultMarkdown string
+  const [markdownText, setMarkDownText] = useState<string>(defaultMarkdown);
 
+  // Return the JSX for the component
   return (
     <>
       <div>
         <h1> Markdown Previewer</h1>
         <div className='boxes-container'>
-            <textarea name="editor" id="editor" value={markdownText} onChange={(e) => setMarkDownText(e.target.value)  }></textarea>
-            <div id='preview'>
-              <ReactMarkdown>{markdownText}</ReactMarkdown>
-            </div>
-            
-
+          <textarea // Text area for editing markdown
+            name="editor"
+            id="editor"
+            value={markdownText} // Set the value of the textarea to markdownText state
+            onChange={(e) => setMarkDownText(e.target.value)} // Update markdownText state on change
+          ></textarea>
+          <div id='preview'>  {/* Container for the markdown preview */}
+            <ReactMarkdown>{markdownText}</ReactMarkdown>  {/* Render markdownText using ReactMarkdown */}
+          </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
